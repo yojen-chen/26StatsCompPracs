@@ -1,0 +1,162 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Practical One",
+    "section": "",
+    "text": "Find all rows in “airquality” that have missing values.\n\nrows_with_na &lt;- airquality[rowSums(is.na(airquality))&gt;0, ]\nas.integer(rownames(rows_with_na))\n\n [1]   5   6  10  11  25  26  27  32  33  34  35  36  37  39  42  43  45  46  52\n[20]  53  54  55  56  57  58  59  60  61  65  72  75  83  84  96  97  98 102 103\n[39] 107 115 119 150",
+    "crumbs": [
+      "Practical One"
+    ]
+  },
+  {
+    "objectID": "index.html#part-1",
+    "href": "index.html#part-1",
+    "title": "Practical One",
+    "section": "",
+    "text": "Find all rows in “airquality” that have missing values.\n\nrows_with_na &lt;- airquality[rowSums(is.na(airquality))&gt;0, ]\nas.integer(rownames(rows_with_na))\n\n [1]   5   6  10  11  25  26  27  32  33  34  35  36  37  39  42  43  45  46  52\n[20]  53  54  55  56  57  58  59  60  61  65  72  75  83  84  96  97  98 102 103\n[39] 107 115 119 150",
+    "crumbs": [
+      "Practical One"
+    ]
+  },
+  {
+    "objectID": "index.html#part-2",
+    "href": "index.html#part-2",
+    "title": "Practical One",
+    "section": "Part 2:",
+    "text": "Part 2:\nFind mean, sd, min, max for each of temperature and ozone level.\n\nTemperature\n\nmean(airquality$Temp)\n\n[1] 77.88235\n\nsd(airquality$Temp)\n\n[1] 9.46527\n\nmin(airquality$Temp)\n\n[1] 56\n\nmax(airquality$Temp)\n\n[1] 97\n\n\n\n\nOzone\n\nmean(airquality$Ozone, na.rm = TRUE)\n\n[1] 42.12931\n\nsd(airquality$Ozone, na.rm = TRUE)\n\n[1] 32.98788\n\nmin(airquality$Ozone, na.rm = TRUE)\n\n[1] 1\n\nmax(airquality$Ozone, na.rm = TRUE)\n\n[1] 168",
+    "crumbs": [
+      "Practical One"
+    ]
+  },
+  {
+    "objectID": "index.html#part-3",
+    "href": "index.html#part-3",
+    "title": "Practical One",
+    "section": "Part 3:",
+    "text": "Part 3:\nThe cars data contains two variables: speed and distance to stop. Fit a simple linear regression model to these data, i.e. find the estimates.\n\nx &lt;- cbind(1, cars$speed)\ny &lt;- cars$dist\n\nbeta &lt;- solve(t(x)%*%x)%*%t(x)%*%y\nbeta\n\n           [,1]\n[1,] -17.579095\n[2,]   3.932409",
+    "crumbs": [
+      "Practical One"
+    ]
+  },
+  {
+    "objectID": "index.html#part-4",
+    "href": "index.html#part-4",
+    "title": "Practical One",
+    "section": "Part 4:",
+    "text": "Part 4:\n\nCheck that you get the same beta estimates as when fitting the linear regression model using lm() in R.\n\n\nmodel &lt;- lm(dist ~ speed, data = cars)\nsummary(model)\n\n\nCall:\nlm(formula = dist ~ speed, data = cars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-29.069  -9.525  -2.272   9.215  43.201 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -17.5791     6.7584  -2.601   0.0123 *  \nspeed         3.9324     0.4155   9.464 1.49e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 15.38 on 48 degrees of freedom\nMultiple R-squared:  0.6511,    Adjusted R-squared:  0.6438 \nF-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12",
+    "crumbs": [
+      "Practical One"
+    ]
+  },
+  {
+    "objectID": "Prac3.html",
+    "href": "Prac3.html",
+    "title": "Practical Three",
+    "section": "",
+    "text": "Plot the function \\(f(x) = \\sin(x)\\) for \\(x \\in [-2, 2]\\).\n\nxval &lt;- seq(-2,2,0.1)\nfunc &lt;- sin(xval)\nplot(xval, func, \"l\")",
+    "crumbs": [
+      "Practical Three"
+    ]
+  },
+  {
+    "objectID": "Prac3.html#question-4-plot-curve-function",
+    "href": "Prac3.html#question-4-plot-curve-function",
+    "title": "Practical Three",
+    "section": "",
+    "text": "Plot the function \\(f(x) = \\sin(x)\\) for \\(x \\in [-2, 2]\\).\n\nxval &lt;- seq(-2,2,0.1)\nfunc &lt;- sin(xval)\nplot(xval, func, \"l\")",
+    "crumbs": [
+      "Practical Three"
+    ]
+  },
+  {
+    "objectID": "Prac3.html#question-5-qq-plot",
+    "href": "Prac3.html#question-5-qq-plot",
+    "title": "Practical Three",
+    "section": "Question 5: QQ-plot",
+    "text": "Question 5: QQ-plot\nGenerate 1000 values from a \\(t\\)-distribution with 1 degree of freedom.\nConstruct a QQ-plot with 95% probability bands (envelopes) to check whether the above values come from a standard normal distribution. You can only use use rnorm(), but not qnorm, dnorm, pnorm, or R’s qqplot functions.\n\nset.seed(500)\nx &lt;- rt(1000, 1)\nn &lt;- length(x)\nx_sorted &lt;- sort(x)\n\n#generating theoretical normal order statistics using stimulation\nB &lt;- 1000\nZ &lt;- matrix(rnorm(n * B), nrow = n, ncol = B)\nZ_sorted &lt;- apply(Z, 2, sort)\n\n#95% envelope\ntheoretical &lt;- rowMeans(Z_sorted)\nlower &lt;- apply(Z_sorted, 1, quantile, probs = 0.025)\nupper &lt;- apply(Z_sorted, 1, quantile, probs = 0.975)\n\n#qqplot\nplot(theoretical, x_sorted, pch = 20, cex = 0.5,\n     xlab = \"Theoretical Quantiles (Normal)\",\n     ylab = \"Sample Quantiles\",\n     main = \"QQ-Plot with 95% Envelopes\",\n     ylim = c(-5, 5))\n\nlines(theoretical, lower, col = \"red\", lwd = 2)\nlines(theoretical, upper, col = \"green\", lwd = 2)\nabline(0, 1, col = \"blue\", lwd = 2)\n\n\n\n\n\n\n\n\nCheck with:\n\nlibrary(car)\nqqPlot(x, envelope = 0.95, ylim = c(-5, 5))\n\n\n\n\n\n\n\n\n[1] 532 162",
+    "crumbs": [
+      "Practical Three"
+    ]
+  },
+  {
+    "objectID": "Prac4.html",
+    "href": "Prac4.html",
+    "title": "Practical Four",
+    "section": "",
+    "text": "setting up:\n# Install tidyverse if not already installed\nif (!requireNamespace(\"tidyverse\", quietly = TRUE)) {\n  install.packages(\"tidyverse\")\n}\nlibrary(tidyverse)\n\n# Install and load nycflights13 for flight data\nif (!requireNamespace(\"nycflights13\", quietly = TRUE)) {\n  install.packages(\"nycflights13\")\n}\nlibrary(nycflights13)",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-1",
+    "href": "Prac4.html#question-1",
+    "title": "Practical Four",
+    "section": "Question 1:",
+    "text": "Question 1:\nDisplay the flights dataset in an alternative format to simply printing it (i.e. running flights).\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-2",
+    "href": "Prac4.html#question-2",
+    "title": "Practical Four",
+    "section": "Question 2:",
+    "text": "Question 2:\nRewrite this code using dplyr and the pipe:\noriginal codes:\n\nflight1 &lt;- flights[flights$month == 1, ]\ncarrier_vec &lt;- unique(flight1$carrier)\ncarrier_dist_vec_mean &lt;- numeric(length(carrier_vec))\ncarrier_dist_vec_sd &lt;- numeric(length(carrier_vec))\nfor (i in seq_along(carrier_vec)) {\n  carrier_dist_vec_mean[i] &lt;- mean(\n    flight1$distance[flight1$carrier == carrier_vec[i]]\n   )\n  carrier_dist_vec_sd[i] &lt;- sd(\n    flight1$distance[flight1$carrier == carrier_vec[i]]\n  )\n}\ndist_tbl &lt;- tibble(\n  carrier = carrier_vec,\n  mean_distance = carrier_dist_vec_mean,\n  sd_distance = carrier_dist_vec_sd\n)\ndist_tbl[order(dist_tbl$mean_distance), ]\n\n# A tibble: 16 × 3\n   carrier mean_distance sd_distance\n   &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;\n 1 YV               229          0  \n 2 9E               476.       334. \n 3 EV               522.       294. \n 4 US               536.       553. \n 5 MQ               566.       223. \n 6 FL               691.       142. \n 7 OO               733         NA  \n 8 WN               942.       496. \n 9 B6              1062.       681. \n10 DL              1220.       644. \n11 AA              1350.       626. \n12 UA              1462.       778. \n13 F9              1620          0  \n14 AS              2402          0  \n15 VX              2495.        98.2\n16 HA              4983          0  \n\n\n##rewrite using dplyr and the pipe:\n\ndist_summary &lt;- flights |&gt; \n                    filter(month == 1) |&gt; \n                    group_by(carrier) |&gt; \n                    summarise(mean_distance = mean(distance), sd_distance = sd(distance)) |&gt; \n                    arrange(mean_distance)\nprint(dist_summary)\n\n# A tibble: 16 × 3\n   carrier mean_distance sd_distance\n   &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;\n 1 YV               229          0  \n 2 9E               476.       334. \n 3 EV               522.       294. \n 4 US               536.       553. \n 5 MQ               566.       223. \n 6 FL               691.       142. \n 7 OO               733         NA  \n 8 WN               942.       496. \n 9 B6              1062.       681. \n10 DL              1220.       644. \n11 AA              1350.       626. \n12 UA              1462.       778. \n13 F9              1620          0  \n14 AS              2402          0  \n15 VX              2495.        98.2\n16 HA              4983          0",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-3",
+    "href": "Prac4.html#question-3",
+    "title": "Practical Four",
+    "section": "Question 3:",
+    "text": "Question 3:\nExplain why the standard deviation is NA for one carrier, and why it is 0 for others. Demonstrate your answer using code.\n\nsd_zero &lt;- dist_summary |&gt; filter(sd_distance == 0) |&gt; select(carrier, sd_distance)\nsd_na &lt;- dist_summary |&gt; filter(is.na(sd_distance)) |&gt; select(carrier, sd_distance)\n\nflights |&gt; \n  filter(month == 1) |&gt; \n  filter(carrier %in% c(\"OO\", \"YV\", \"F9\", \"AS\", \"HA\")) |&gt; \n  group_by(carrier, distance) |&gt; \n  summarise(observations = n(), .groups = \"drop\")\n\n# A tibble: 5 × 3\n  carrier distance observations\n  &lt;chr&gt;      &lt;dbl&gt;        &lt;int&gt;\n1 AS          2402           62\n2 F9          1620           59\n3 HA          4983           31\n4 OO           733            1\n5 YV           229           46\n\n\nThe standard deviation for OO is NA because there is only one observation. And is 0 for AS, F9, HA, and YV because all observations are equal for each carrier.",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-4",
+    "href": "Prac4.html#question-4",
+    "title": "Practical Four",
+    "section": "Question 4:",
+    "text": "Question 4:\nUsing tidyr and dplyr where appropriate, construct a dataframe where the carriers are along the columns, and the rows are the average departure delay (dep_delay) flown by each carrier (carrier) in each month.\n\nflights |&gt; \n  group_by(month, carrier) |&gt; \n  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups = \"drop\") |&gt; \n  pivot_wider(names_from = carrier, values_from = avg_dep_delay)\n\n# A tibble: 12 × 17\n   month  `9E`    AA     AS    B6    DL    EV    F9    FL    HA    MQ    OO\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1 16.9   6.93  7.35   9.49  3.85 24.2  10     1.97 54.4   6.49 67   \n 2     2 16.5   8.28  0.722 13.8   5.54 21.5  29.8   5.18 17.4   8.09 NA   \n 3     3 13.4   8.70  8.42  14.2   9.93 26.2  16.8  17.3   1.16  7.19 NA   \n 4     4 13.6  11.7  11.3   15.2   8.17 22.8  24.6  13.1  -2.1  13.7  NA   \n 5     5 22.7   9.66  6.77   9.78  9.74 20.2  35.9  19.2  -1.45 13.9  NA   \n 6     6 29.0  14.6  13.1   20.4  18.7  25.5  29.4  38.8   1.47 20.8  61   \n 7     7 31.4  12.1   2.42  24.9  20.6  26.5  31.8  41.2  -1.71 20.7  NA   \n 8     8 17.3   7.17  2.87  15.7   9.85 16.3  22.2  23.4   1.68 10.1  64   \n 9     9  7.75  5.69 -4.52   6.63  5.53  8.24  8.26 16.9  -5.44  5.35 -4.94\n10    10  9.33  3.00  0.677  2.96  3.42 13.4   9.70 13.7  -5.10  4.48 NA   \n11    11  7.56  3.10  3.08   3.52  2.85  9.83 13.5  16.9  -5.44  3.28  0.8 \n12    12 19.8  11.7  18.0   17.0  10.8  27.9  13.1  26.1  -3.14 12.7  NA   \n# ℹ 5 more variables: UA &lt;dbl&gt;, US &lt;dbl&gt;, VX &lt;dbl&gt;, WN &lt;dbl&gt;, YV &lt;dbl&gt;",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-5",
+    "href": "Prac4.html#question-5",
+    "title": "Practical Four",
+    "section": "Question 5:",
+    "text": "Question 5:\nCalculate the proportion of flights that were delayed (dep_delay greater than 0) but arrived on or before time (arr_delay less than or equal to 0).\n\nflights |&gt; \n  summarise(proportion = mean(dep_delay &gt; 0 & arr_delay &lt;= 0, na.rm = TRUE))\n\n# A tibble: 1 × 1\n  proportion\n       &lt;dbl&gt;\n1      0.108",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-6",
+    "href": "Prac4.html#question-6",
+    "title": "Practical Four",
+    "section": "Question 6:",
+    "text": "Question 6:\n##Identify routes that have more than one airline flies\n\nroutes &lt;- flights |&gt; \n            group_by(origin, dest) |&gt; \n            summarise(num_carriers = n_distinct(carrier), .groups = \"drop\") |&gt; \n            filter(num_carriers &gt; 1)\nroutes\n\n# A tibble: 128 × 3\n   origin dest  num_carriers\n   &lt;chr&gt;  &lt;chr&gt;        &lt;int&gt;\n 1 EWR    ATL              4\n 2 EWR    AUS              2\n 3 EWR    BDL              2\n 4 EWR    BNA              2\n 5 EWR    BOS              3\n 6 EWR    BWI              2\n 7 EWR    CHS              2\n 8 EWR    CLE              2\n 9 EWR    CLT              3\n10 EWR    CVG              2\n# ℹ 118 more rows\n\n\n##For each such route, calculate the average arrival delay for each airline (exclude NAs). Find the names of these airlines.\n\navg_delays &lt;- flights |&gt; \n                inner_join(routes, by = c(\"origin\", \"dest\")) |&gt;\n                group_by(origin, dest, carrier) |&gt; \n                summarise(avg_arr_delay = mean(arr_delay, na.rm =TRUE), .groups = \"drop\") |&gt; \n                inner_join(airlines, by = \"carrier\") |&gt; \n                relocate(Airline_name = name, .before = avg_arr_delay)\navg_delays\n\n# A tibble: 343 × 5\n   origin dest  carrier Airline_name             avg_arr_delay\n   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;                            &lt;dbl&gt;\n 1 EWR    ATL   9E      Endeavor Air Inc.                -6.25\n 2 EWR    ATL   DL      Delta Air Lines Inc.             10.0 \n 3 EWR    ATL   EV      ExpressJet Airlines Inc.         19.5 \n 4 EWR    ATL   UA      United Air Lines Inc.            10.5 \n 5 EWR    AUS   UA      United Air Lines Inc.             4.28\n 6 EWR    AUS   WN      Southwest Airlines Co.          -11.2 \n 7 EWR    BDL   EV      ExpressJet Airlines Inc.          6.78\n 8 EWR    BDL   UA      United Air Lines Inc.            22.6 \n 9 EWR    BNA   EV      ExpressJet Airlines Inc.         17.7 \n10 EWR    BNA   WN      Southwest Airlines Co.           -2.13\n# ℹ 333 more rows\n\n\n##For each such route, identify the airline with the worst and best average arrival delay.\n\nbest_worst &lt;- avg_delays |&gt; \n  group_by(origin, dest) |&gt; \n  summarise(worst_airline = Airline_name[which.max(avg_arr_delay)],\n            worst_arr_delay = max(avg_arr_delay),\n            best_airline = Airline_name[which.min(avg_arr_delay)],\n            best_arr_delay = min(avg_arr_delay),\n            .groups = \"drop\")\nbest_worst\n\n# A tibble: 128 × 6\n   origin dest  worst_airline        worst_arr_delay best_airline best_arr_delay\n   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;\n 1 EWR    ATL   ExpressJet Airlines…           19.5  Endeavor Ai…         -6.25 \n 2 EWR    AUS   United Air Lines In…            4.28 Southwest A…        -11.2  \n 3 EWR    BDL   United Air Lines In…           22.6  ExpressJet …          6.78 \n 4 EWR    BNA   ExpressJet Airlines…           17.7  Southwest A…         -2.13 \n 5 EWR    BOS   JetBlue Airways                 6.87 ExpressJet …         -4.01 \n 6 EWR    BWI   ExpressJet Airlines…           20.1  Southwest A…          5.95 \n 7 EWR    CHS   ExpressJet Airlines…           16.2  United Air …        -14    \n 8 EWR    CLE   United Air Lines In…            5.97 ExpressJet …         -3.71 \n 9 EWR    CLT   ExpressJet Airlines…           20.5  US Airways …          0.920\n10 EWR    CVG   ExpressJet Airlines…           21.2  Endeavor Ai…          1.40 \n# ℹ 118 more rows\n\n\n##Identify the route with the greatest difference between the best and worst performing airlines.\n\ngreatest_diff &lt;- best_worst |&gt; \n  group_by(origin, dest) |&gt;\n  mutate(diff = worst_arr_delay - best_arr_delay) |&gt; \n  arrange(desc(diff))\nhead(greatest_diff, n=1)\n\n# A tibble: 1 × 7\n# Groups:   origin, dest [1]\n  origin dest  worst_airline   worst_arr_delay best_airline best_arr_delay  diff\n  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n1 JFK    ATL   ExpressJet Air…             128 Endeavor Ai…           1.40  127.\n\n\n##Determine the reason for this difference\n\nflights |&gt; \n  filter(origin == \"JFK\", dest == \"ATL\") |&gt; \n  group_by(carrier) %&gt;%\n  summarise(num_flights = n(),avg_dep_delay = mean(dep_delay, na.rm = TRUE), avg_arr_delay = mean(arr_delay, na.rm = TRUE)) |&gt; \n  left_join(airlines, by = \"carrier\") |&gt; \n  relocate(carrier, name)\n\n# A tibble: 3 × 5\n  carrier name                     num_flights avg_dep_delay avg_arr_delay\n  &lt;chr&gt;   &lt;chr&gt;                          &lt;int&gt;         &lt;dbl&gt;         &lt;dbl&gt;\n1 9E      Endeavor Air Inc.                 55          1.47          1.40\n2 DL      Delta Air Lines Inc.            1874         10.7           6.34\n3 EV      ExpressJet Airlines Inc.           1        124           128   \n\n\nExpressJet Airlines Inc. has only flown once on this route, from JFK to ATL, and this large difference is due to it being delayed by 2 hours and 4 minutes whereas Endeavor has flown 55 times with an average departure delay of only 1 minutes. This is not a very good indication of whether ExpressJet Airlines Inc. is a bad airline since there is only 1 observation.",
+    "crumbs": [
+      "Practical Four"
+    ]
+  },
+  {
+    "objectID": "Prac4.html#question-7",
+    "href": "Prac4.html#question-7",
+    "title": "Practical Four",
+    "section": "Question 7:",
+    "text": "Question 7:\nIdentify all columns with missing entries, typos and any other inconsistencies in the dataset below (load it just by running the code; created using dput command, FYI):\nmissing entries:\n\ndf |&gt; \n  filter(is.na(height) | is.na(glucose)) |&gt; \n  select(id, height, glucose)\n\n# A tibble: 5 × 3\n  id    height glucose\n  &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1 id_5     NA      103\n2 id_8    157.      NA\n3 id_15   178.      NA\n4 id_20    NA       87\n5 id_40   170.      NA\n\n\ntypos:\n\ndf |&gt; \n  filter(gender != \"male\", gender != \"female\") |&gt; \n  select(id, gender)\n\n# A tibble: 1 × 2\n  id    gender\n  &lt;chr&gt; &lt;chr&gt; \n1 id_25 femal \n\n\ninconsistencies:\n\ndf |&gt; \n  filter(disease_status != \"healthy\", disease_status != \"diseased\") |&gt; \n  select(id, disease_status)\n\n# A tibble: 1 × 2\n  id    disease_status\n  &lt;chr&gt; &lt;chr&gt;         \n1 id_10 Healthy",
+    "crumbs": [
+      "Practical Four"
+    ]
+  }
+]
