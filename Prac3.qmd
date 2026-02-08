@@ -1,6 +1,6 @@
 ---
-title: "Practical three"
-author: "Yo-Jen Chen"
+title: "Practical Three"
+author: ""
 format: html
 ---
 
@@ -52,6 +52,8 @@ abline(0, 1, col = "blue", lwd = 2)
 Check with:
 
 ```{r}
+#| message: false
+#| warning: false
 library(car)
 qqPlot(x, envelope = 0.95, ylim = c(-5, 5))
 ```
