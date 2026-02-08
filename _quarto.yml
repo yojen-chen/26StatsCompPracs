@@ -1,5 +1,22 @@
 project:
-  title: "pracs"
+  type: website
+  title: Statistical Computing Pracs - Yo-Jen Chen
+  output-dir: _site
+  
+website: 
+  sidebar: 
+    border: true
+    background: light
+    position: right
+    contents:
+    - index.qmd
+    - Prac3.qmd
+    - Prac4.qmd
 
-editor: visual
-
+format:
+  html: 
+    theme: simplex
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: false
