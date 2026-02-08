@@ -1,44 +1,35 @@
 ---
-title: "Practical one"
-author: "Yo-Jen Chen"
+title: "Practical One"
+author: ""
 format: html
 editor: visual
 ---
 
 ## Part 1:
 
+Find all rows in “airquality” that have missing values.
+
 ```{r}
-airquality
 rows_with_na <- airquality[rowSums(is.na(airquality))>0, ]
-rows_with_na
-```
-
-\*solutions:
-
-```{r}
-# How do I know if something is na: is.na()
-df <-  airquality
-
-naRows <- c()
-for (r in 1:nrow(df)){
-  for (col in 1:ncol(df)){
-    if (is.na(df[r, col])){
-      naRows <- c(naRows, r)
-      break
-    }
-  }
-}
-print(naRows)
+as.integer(rownames(rows_with_na))
 ```
 
 ## Part 2:
+
+Find mean, sd, min, max for each of temperature and ozone level.
+
+### Temperature
 
 ```{r}
 mean(airquality$Temp)
 sd(airquality$Temp)
 min(airquality$Temp)
 max(airquality$Temp)
+```
 
+### Ozone 
+
+```{r}
 mean(airquality$Ozone, na.rm = TRUE)
 sd(airquality$Ozone, na.rm = TRUE)
 min(airquality$Ozone, na.rm = TRUE)
@@ -46,6 +37,8 @@ max(airquality$Ozone, na.rm = TRUE)
 ```
 
 ## Part 3:
+
+The cars data contains two variables: speed and distance to stop. Fit a simple linear regression model to these data, i.e. find the estimates.
 
 ```{r}
 x <- cbind(1, cars$speed)
@@ -56,6 +49,8 @@ beta
 ```
 
 ## Part 4:
+
+1.  Check that you get the same beta estimates as when fitting the linear regression model using lm() in R.
 
 ```{r}
 model <- lm(dist ~ speed, data = cars)
