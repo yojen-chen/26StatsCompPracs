@@ -1,14 +1,13 @@
 ---
-title: "Practical four"
-author: "Yo-Jen Chen"
+title: "Practical Four"
+author: ""
 format: html
 ---
 
-## Practical Four
-
-set up:
+setting up:
 
 ```{r}
+#| warning: false 
 # Install tidyverse if not already installed
 if (!requireNamespace("tidyverse", quietly = TRUE)) {
   install.packages("tidyverse")
@@ -23,13 +22,17 @@ library(nycflights13)
 
 ```
 
-### Question 1:
+## Question 1:
+
+Display the `flights` dataset in an alternative format to simply printing it (i.e. running `flights`).
 
 ```{r}
 glimpse(flights)
 ```
 
-### Question 2:
+## Question 2:
+
+Rewrite this code using `dplyr` and the pipe:
 
 original codes:
 
@@ -65,7 +68,7 @@ dist_summary <- flights |>
 print(dist_summary)
 ```
 
-### Question 3:
+## Question 3:
 
 Explain why the standard deviation is `NA` for one carrier, and why it is `0` for others. Demonstrate your answer using code.
 
@@ -83,7 +86,7 @@ flights |>
 
 The standard deviation for OO is NA because there is only one observation. And is 0 for AS, F9, HA, and YV because all observations are equal for each carrier.
 
-### Question 4:
+## Question 4:
 
 Using `tidyr` and `dplyr` where appropriate, construct a dataframe where the carriers are along the columns, and the rows are the average departure delay (`dep_delay`) flown by each carrier (`carrier`) in each month.
 
@@ -94,7 +97,7 @@ flights |>
   pivot_wider(names_from = carrier, values_from = avg_dep_delay)
 ```
 
-### Question 5:
+## Question 5:
 
 Calculate the proportion of flights that were delayed (`dep_delay` greater than 0) but arrived on or before time (`arr_delay` less than or equal to 0).
 
@@ -103,7 +106,7 @@ flights |>
   summarise(proportion = mean(dep_delay > 0 & arr_delay <= 0, na.rm = TRUE))
 ```
 
-### Question 6:
+## Question 6:
 
 ##Identify routes that have more than one airline flies
 
@@ -163,7 +166,7 @@ flights |>
 
 ExpressJet Airlines Inc. has only flown once on this route, from JFK to ATL, and this large difference is due to it being delayed by 2 hours and 4 minutes whereas Endeavor has flown 55 times with an average departure delay of only 1 minutes. This is not a very good indication of whether ExpressJet Airlines Inc. is a bad airline since there is only 1 observation.
 
-### Question 7:
+## Question 7:
 
 Identify all columns with missing entries, typos and any other inconsistencies in the dataset below (load it just by running the code; created using `dput` command, FYI):
 
