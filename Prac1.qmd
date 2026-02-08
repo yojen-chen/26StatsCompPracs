@@ -1,0 +1,63 @@
+---
+title: "Practical one"
+author: "Yo-Jen Chen"
+format: html
+editor: visual
+---
+
+## Part 1:
+
+```{r}
+airquality
+rows_with_na <- airquality[rowSums(is.na(airquality))>0, ]
+rows_with_na
+```
+
+\*solutions:
+
+```{r}
+# How do I know if something is na: is.na()
+df <-  airquality
+
+naRows <- c()
+for (r in 1:nrow(df)){
+  for (col in 1:ncol(df)){
+    if (is.na(df[r, col])){
+      naRows <- c(naRows, r)
+      break
+    }
+  }
+}
+print(naRows)
+```
+
+## Part 2:
+
+```{r}
+mean(airquality$Temp)
+sd(airquality$Temp)
+min(airquality$Temp)
+max(airquality$Temp)
+
+mean(airquality$Ozone, na.rm = TRUE)
+sd(airquality$Ozone, na.rm = TRUE)
+min(airquality$Ozone, na.rm = TRUE)
+max(airquality$Ozone, na.rm = TRUE)
+```
+
+## Part 3:
+
+```{r}
+x <- cbind(1, cars$speed)
+y <- cars$dist
+
+beta <- solve(t(x)%*%x)%*%t(x)%*%y
+beta
+```
+
+## Part 4:
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+summary(model)
+```

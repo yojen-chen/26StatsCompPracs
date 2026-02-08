@@ -1,0 +1,57 @@
+---
+title: "Practical three"
+author: "Yo-Jen Chen"
+format: html
+---
+
+## Question 4: Plot curve / function
+
+Plot the function $f(x) = \sin(x)$ for $x \in [-2, 2]$.
+
+```{r}
+xval <- seq(-2,2,0.1)
+func <- sin(xval)
+plot(xval, func, "l")
+```
+
+## Question 5: QQ-plot
+
+Generate 1000 values from a $t$-distribution with 1 degree of freedom.
+
+Construct a QQ-plot with 95% probability bands (envelopes) to check whether the above values come from a standard normal distribution. You can only use use `rnorm()`, but not `qnorm`, `dnorm`, `pnorm`, or R's qqplot functions.
+
+```{r}
+set.seed(500)
+x <- rt(1000, 1)
+n <- length(x)
+x_sorted <- sort(x)
+
+#generating theoretical normal order statistics using stimulation
+B <- 1000
+Z <- matrix(rnorm(n * B), nrow = n, ncol = B)
+Z_sorted <- apply(Z, 2, sort)
+
+#95% envelope
+theoretical <- rowMeans(Z_sorted)
+lower <- apply(Z_sorted, 1, quantile, probs = 0.025)
+upper <- apply(Z_sorted, 1, quantile, probs = 0.975)
+
+#qqplot
+plot(theoretical, x_sorted, pch = 20, cex = 0.5,
+     xlab = "Theoretical Quantiles (Normal)",
+     ylab = "Sample Quantiles",
+     main = "QQ-Plot with 95% Envelopes",
+     ylim = c(-5, 5))
+
+lines(theoretical, lower, col = "red", lwd = 2)
+lines(theoretical, upper, col = "green", lwd = 2)
+abline(0, 1, col = "blue", lwd = 2)
+
+```
+
+Check with:
+
+```{r}
+library(car)
+qqPlot(x, envelope = 0.95, ylim = c(-5, 5))
+```
