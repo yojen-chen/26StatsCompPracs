@@ -126,7 +126,7 @@ avg_delays <- flights |>
                 group_by(origin, dest, carrier) |> 
                 summarise(avg_arr_delay = mean(arr_delay, na.rm =TRUE), .groups = "drop") |> 
                 inner_join(airlines, by = "carrier") |> 
-                relocate(Airline_name = name, .before = avg_arr_delay)
+                relocate(Airline = name, .before = avg_arr_delay)
 avg_delays
 ```
 
@@ -135,9 +135,9 @@ avg_delays
 ```{r}
 best_worst <- avg_delays |> 
   group_by(origin, dest) |> 
-  summarise(worst_airline = Airline_name[which.max(avg_arr_delay)],
+  summarise(worst_airline = Airline[which.max(avg_arr_delay)],
             worst_arr_delay = max(avg_arr_delay),
-            best_airline = Airline_name[which.min(avg_arr_delay)],
+            best_airline = Airline[which.min(avg_arr_delay)],
             best_arr_delay = min(avg_arr_delay),
             .groups = "drop")
 best_worst
