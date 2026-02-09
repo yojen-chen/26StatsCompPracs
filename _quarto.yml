@@ -15,7 +15,7 @@ website:
 
 format:
   html: 
-    theme: bootstrap
+    theme: cosmo
     toc: true
     toc-depth: 3
     toc-location: right
