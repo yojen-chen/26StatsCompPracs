@@ -45,6 +45,15 @@ plot(theoretical, x_sorted, pch = 20, cex = 0.5,
 
 lines(theoretical, lower, col = "red", lwd = 2)
 lines(theoretical, upper, col = "green", lwd = 2)
+
+polygon(
+  c(theoretical, rev(theoretical)),
+  c(upper, rev(lower)),
+  col = rgb(0, 0, 1, 0.2),
+  border = NA
+)
+
+
 abline(0, 1, col = "blue", lwd = 2)
 
 ```
